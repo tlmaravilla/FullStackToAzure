@@ -1,3 +1,4 @@
+using BlazorAppArdalis.Areas.Identity;
 using FullStackToAzure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -34,7 +35,7 @@ namespace FullStackToAzure
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 
             services.AddSingleton<WeatherForecastService>();
         }
